@@ -1,0 +1,15 @@
+#!/bin/bash
+# Git workflow ship script from: http://reinh.com/blog/2008/08/27/hack-and-and-ship.html
+# git name-rev is fail
+ref=$(git symbolic-ref HEAD &2> /dev/null) || exit 0
+CURRENT="${ref#refs/heads/}"
+read -p "Pushing ${CURRENT} to origin. Are you sure? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    set -x
+    git checkout master
+    git merge ${CURRENT}
+    git push origin master
+    git checkout ${CURRENT}
+fi

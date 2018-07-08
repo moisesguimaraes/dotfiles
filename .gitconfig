@@ -1,25 +1,21 @@
 [user]
-  name = Jeff Geerling
-  email = geerlingguy@mac.com
+  name = Moisés Guimarães de Medeiros
+  email = moises.guimaraes@pm.me
 [core]
   editor = vi
+  whitespace = warn
   excludesfile = ~/.gitignore
-  autocrlf = input
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [color]
   branch = auto
   diff = auto
   interactive = auto
   status = auto
-[web]
-  browser = google-chrome
-[credential]
-  helper = osxkeychain
-[push]
-  default = simple
-[merge]
-  tool = kdiff3
-[difftool]
-  prompt = false
 [alias]
   c = commit
   ca = commit -a
@@ -28,3 +24,9 @@
   d = diff
   dc = diff --cached
   l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
+  lg = log --all --graph --abbrev-commit --decorate --date=format:\"%a, %d %b %Y %H:%M\" --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%ad %C(bold green)(%ar)%C(bold yellow)%d %C(dim white)%an%n          %C(white)%s%n\"
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
