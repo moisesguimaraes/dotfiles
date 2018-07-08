@@ -105,36 +105,13 @@ alias ls='ls -GFh'
 ###
 
 # git macros
-export PATH=$PATH:/Users/moisesguimaraes/.git-extras
+export PATH=$PATH:/Users/moisesguimaraes/.gitextras
 # clang static analyzer
 export PATH=$PATH:~/.checker/279/bin
 
 # git shortcuts
 alias gcb='git checkout -b'
 alias hsd='hack && ship && dwf'
-# git config --global alias.lg 'log --all --graph --abbrev-commit --decorate --date=format:"%a, %d %b %Y %H:%M" --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%ad %C(bold green)(%ar)%C(bold yellow)%d %C(dim white)%an%n          %C(white)%s%n"'
-
-###
-### Java
-###
-
-export JUNIT_HOME=/usr/local/lib/java/junit
-
-###
-### wolfSSL
-###
-
-HAVE_FIPS_SOURCE=1
-#export WOLFSSL_OPENSSL_TEST=1
-export WOLFSSL_EXTERNAL_TEST=1
-
-alias conf='./configure'
-alias dconf='./configure --enable-debug --disable-shared'
-alias cconf='git clean -fdX && ./autogen.sh && ./configure'
-alias bloxxconf='./configure --enable-fasthugemath --enable-md2 --enable-sni --enable-ecc --enable-renegotiation-indication --enable-sha512 --enable-supportedcurves --enable-dh --enable-chacha --enable-poly1305 --enable-aesgcm --enable-sslv3 C_EXTRA_FLAGS="-DMAX_CHAIN_DEPTH=10 -DLARGE_STATIC_BUFFERS -DWOLFSSL_CERT_GEN -DWOLFSSL_KEY_GEN -DHUGE_SESSION_CACHE -DOPENSSL_EXTRA -DFP_MAX_BITS=8192 -DWOLFSSL_DER_LOAD -DWOLFSSL_ALT_NAMES -DWOLFSSL_TEST_CERT -DWOLFSSL_ALTERNATIVE_DOWNGRADE -DWOLFSSL_BASE64_ENCODE -DWOLFSSL_STATIC_RSA -DIGNORE_KEY_EXTENSIONS -DWOLFSSL_ALWAYS_VERIFY_CB -g1 -feliminate-unused-debug-symbols"'
-
-alias fipsconf='./configure --enable-fips --enable-keygen'
-alias fipshash='./wolfcrypt/test/testwolfcrypt | sed -n "s/hash = \(.*\)/\1/p"'
 
 ###
 ### Wireshark
