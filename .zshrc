@@ -94,6 +94,11 @@ alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
 ###
+### home path
+###
+export PATH="${HOME}/bin:${PATH}"
+
+###
 ### color settings
 ###
 
@@ -103,6 +108,8 @@ alias ls='ls -GFh'
 ###
 ### Git
 ###
+
+# export HOMEBREW_GITHUB_API_TOKEN=
 
 # git macros
 export PATH=$PATH:/Users/moisesguimaraes/.gitextras
