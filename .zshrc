@@ -148,7 +148,7 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/lo
 
 # configuração de ambientes virtuais
 export WORKON_HOME=~/.ve
-export PROJECT_HOME=~/workspaces/python
+export PROJECT_HOME=~/workspaces
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
 # comment this line before backup!
