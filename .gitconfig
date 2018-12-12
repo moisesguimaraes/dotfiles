@@ -1,6 +1,11 @@
 [user]
   name = Moisés Guimarães de Medeiros
-  email = moises.guimaraes@pm.me
+  email = guimaraes@pm.me
+[includeIf "gitdir:~/workspaces/redhat/"]
+[includeIf "gitdir:~/workspaces/redhat/**"]
+  path = .gitconfig.redhat
+[includeIf "gitdir:~/workspaces/wolfssl/**"]
+  path = .gitconfig.wolfssl
 [core]
   editor = vi
   whitespace = warn

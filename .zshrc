@@ -93,6 +93,8 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
+alias dotfiles="code ~/Dropbox/Workstation/dotfiles"
+
 ###
 ### home path
 ###
