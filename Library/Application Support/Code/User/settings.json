@@ -1,0 +1,15 @@
+{
+    // Editor
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.renderWhitespace": "all",
+ 
+    // Python linters
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "/Users/moisesguimaraes/.pyenv/shims/flake8",
+
+    // Theme
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 0
+}
