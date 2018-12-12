@@ -111,8 +111,6 @@ alias ls='ls -GFh'
 
 # export HOMEBREW_GITHUB_API_TOKEN=
 
-# git macros
-export PATH=$PATH:/Users/moisesguimaraes/.gitextras
 # clang static analyzer
 export PATH=$PATH:~/.checker/279/bin
 
