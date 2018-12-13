@@ -140,6 +140,7 @@ export PROJECT_HOME=$HOME/workspaces
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # comment this line before backup!
 pyenv virtualenvwrapper_lazy
