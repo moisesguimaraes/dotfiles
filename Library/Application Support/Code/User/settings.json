@@ -19,6 +19,8 @@
         "**/.DS_Store": true,
 
         // python
+        "**/*.eggs" : true,
+        "**/*.egg-info" : true,
         "**/*.pyc" : true,
         "**/__pycache__" : true,
         "**/.tox" : true,
@@ -28,7 +30,7 @@
     // Python linters
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "/Users/moisesguimaraes/.pyenv/shims/flake8",
+    "python.linting.flake8Path": "~/.pyenv/shims/flake8",
 
     // Theme
     "workbench.iconTheme": "material-icon-theme",

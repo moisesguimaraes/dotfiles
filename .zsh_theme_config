@@ -1,0 +1,53 @@
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  git
+  status
+  virtualenv
+  custom
+  context
+  dir
+  screen
+  perl
+  ruby
+  nvm
+  aws
+  go
+  rust
+  elixir
+  # hg
+  cmd_exec_time
+)
+
+BULLETTRAIN_DIR_EXTENDED=0
+BULLETTRAIN_GIT_PROMPT_CMD="\$(parse_git_dirty)"
+BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}✘%F{black}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%F{green}✔%F{black}"
+ZSH_THEME_GIT_PROMPT_ADDED="%F{green}✚%F{black}"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%F{blue}✹%F{black}"
+ZSH_THEME_GIT_PROMPT_DELETED="%F{red}✖%F{black}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{yellow}✭%F{black}"
+ZSH_THEME_GIT_PROMPT_RENAMED="➜"
+ZSH_THEME_GIT_PROMPT_UNMERGED="═"
+ZSH_THEME_GIT_PROMPT_AHEAD="⬆"
+ZSH_THEME_GIT_PROMPT_BEHIND="⬇"
+ZSH_THEME_GIT_PROMPT_DIVERGED="⬍"
+
+# Virtualenv: current working virtualenv
+prompt_virtualenv() {
+  local venv_prompt
+  local virtualenv_path="$VIRTUAL_ENV"
+
+  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    venv_prompt="$(basename $virtualenv_path)"
+  elif which pyenv &> /dev/null; then
+    venv_prompt="$(pyenv version | sed -e 's/ (set.*$//' | tr '\n' ' ' | sed 's/.$//')"
+  fi
+
+  if [[ $venv_prompt = $(pyenv global | tr '\n' ' ' | sed 's/.$//') ]]; then
+    venv_prompt="global"
+  fi
+
+  prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG \
+                 "$BULLETTRAIN_VIRTUALENV_PREFIX  $venv_prompt"
+}

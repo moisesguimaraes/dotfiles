@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/moisesguimaraes/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -69,20 +69,20 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vi'
+else
+  export EDITOR='code'
+fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -90,10 +90,25 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="code $HOME/.zshrc"
+alias ohmyzsh="code $HOME/.oh-my-zsh"
 
-alias dotfiles="code ~/Dropbox/Workstation/dotfiles"
+source $HOME/.zsh_theme_config
+
+if [ "$(uname -s)" = "Darwin" ]; then
+  # export HOMEBREW_GITHUB_API_TOKEN=
+
+  # clang static analyzer
+  export PATH=$PATH:$HOME/.checker/279/bin
+
+  # pokemon background alias
+  alias pokemon='/Applications/The\ Pokémon\ Online\ Trading\ Card\ Game/Pokemon\ Trading\ Card\ Game\ Online.app/Contents/MacOS/Pokemon\ Trading\ Card\ Game\ Online &>> /dev/null &'
+fi
+
+if [ "$(uname -s)" = "Linux" ]; then
+  # pyenv path
+  export PATH="$HOME/.pyenv/bin:$PATH"
+fi
 
 ###
 ### home path
@@ -108,101 +123,23 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
 ###
-### Git
+### git
 ###
-
-# export HOMEBREW_GITHUB_API_TOKEN=
-
-# clang static analyzer
-export PATH=$PATH:~/.checker/279/bin
 
 # git shortcuts
 alias gcb='git checkout -b'
 alias hsd='hack && ship && dwf'
 
 ###
-### Wireshark
-###
-
-# wireshark background alias
-alias wireshark='Wireshark 2> /dev/null &'
-
-# pokemon background alias
-alias pokemon='/Applications/The\ Pokémon\ Online\ Trading\ Card\ Game/Pokemon\ Trading\ Card\ Game\ Online.app/Contents/MacOS/Pokemon\ Trading\ Card\ Game\ Online &>> /dev/null &'
-
-###
-### Google Cloud SDK
-###
-
-alias gae="python2 /usr/local/google-cloud-sdk/bin/dev_appserver.py ."
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
-
-###
-### Python
+### pyenv
 ###
 
 # configuração de ambientes virtuais
-export WORKON_HOME=~/.ve
-export PROJECT_HOME=~/workspaces
+export WORKON_HOME=$HOME/.ve
+export PROJECT_HOME=$HOME/workspaces
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
 eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 # comment this line before backup!
-# pyenv virtualenvwrapper_lazy
-
-BULLETTRAIN_PROMPT_ORDER=(
-  time
-  git
-  status
-  virtualenv
-  custom
-  context
-  dir
-  screen
-  perl
-  ruby
-  nvm
-  aws
-  go
-  rust
-  elixir
-  hg
-  cmd_exec_time
-)
-BULLETTRAIN_DIR_EXTENDED=0
-BULLETTRAIN_GIT_PROMPT_CMD="\$(parse_git_dirty)"
-BULLETTRAIN_CONTEXT_DEFAULT_USER=moisesguimaraes
-ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}✘%F{black}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%F{green}✔%F{black}"
-ZSH_THEME_GIT_PROMPT_ADDED="%F{green}✚%F{black}"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%F{blue}✹%F{black}"
-ZSH_THEME_GIT_PROMPT_DELETED="%F{red}✖%F{black}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{yellow}✭%F{black}"
-ZSH_THEME_GIT_PROMPT_RENAMED="➜"
-ZSH_THEME_GIT_PROMPT_UNMERGED="═"
-ZSH_THEME_GIT_PROMPT_AHEAD="⬆"
-ZSH_THEME_GIT_PROMPT_BEHIND="⬇"
-ZSH_THEME_GIT_PROMPT_DIVERGED="⬍"
-
-# Virtualenv: current working virtualenv
-prompt_virtualenv() {
-  local venv_prompt
-  local virtualenv_path="$VIRTUAL_ENV"
-
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    venv_prompt="$(basename $virtualenv_path)"
-  elif which pyenv &> /dev/null; then
-    venv_prompt="$(pyenv version | sed -e 's/ (set.*$//' | tr '\n' ' ' | sed 's/.$//')"
-  fi
-
-  if [[ $venv_prompt = $(pyenv global | tr '\n' ' ' | sed 's/.$//') ]]; then
-    venv_prompt="global"
-  fi
-
-  prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG \
-                 "$BULLETTRAIN_VIRTUALENV_PREFIX  $venv_prompt"
-}
+pyenv virtualenvwrapper_lazy
