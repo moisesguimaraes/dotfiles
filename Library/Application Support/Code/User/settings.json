@@ -3,7 +3,28 @@
     "editor.fontSize": 14,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.renderWhitespace": "all",
- 
+    "files.associations": {
+        "*.conf.sample": "ini",
+        "*.ofx": "xml",
+    },
+
+    // Explorer
+    "explorer.confirmDelete": false,
+    "files.exclude": {
+        // default
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+
+        // python
+        "**/*.pyc" : true,
+        "**/__pycache__" : true,
+        "**/.tox" : true,
+        "**/.stestr" : true,
+    },
+
     // Python linters
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
