@@ -27,7 +27,9 @@
         "**/.stestr" : true,
     },
 
-    // Python linters
+    // Python
+    "python.pythonPath": "~/.pyenv/shims/python",
+
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "~/.pyenv/shims/flake8",
