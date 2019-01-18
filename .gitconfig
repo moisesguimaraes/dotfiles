@@ -1,7 +1,8 @@
 [user]
   name = Moisés Guimarães de Medeiros
   email = guimaraes@pm.me
-[includeIf "gitdir:~/workspaces/redhat/"]
+[includeIf "gitdir:~/workspaces/ifpb/**"]
+  path = .gitconfig.ifpb
 [includeIf "gitdir:~/workspaces/redhat/**"]
   path = .gitconfig.redhat
 [includeIf "gitdir:~/workspaces/wolfssl/**"]

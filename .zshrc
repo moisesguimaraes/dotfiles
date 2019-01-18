@@ -95,9 +95,9 @@ alias ohmyzsh="code $HOME/.oh-my-zsh"
 
 source $HOME/.zsh_theme_config
 
-if [ "$(uname -s)" = "Darwin" ]; then
-  # export HOMEBREW_GITHUB_API_TOKEN=
+source $HOME/.secrets
 
+if [ "$(uname -s)" = "Darwin" ]; then
   # clang static analyzer
   export PATH=$PATH:$HOME/.checker/279/bin
 
