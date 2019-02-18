@@ -95,7 +95,7 @@ alias ohmyzsh="code $HOME/.oh-my-zsh"
 
 source $HOME/.zsh_theme_config
 
-source $HOME/.secrets
+source $HOME/.secrets/profilerc
 
 if [ "$(uname -s)" = "Darwin" ]; then
   # clang static analyzer
