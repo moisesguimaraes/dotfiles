@@ -1,4 +1,9 @@
 {
+    // General
+    "editor.minimap.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "workbench.startupEditor": "newUntitledFile",
+
     // Editor
     "editor.fontSize": 14,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
@@ -6,6 +11,7 @@
     "files.associations": {
         "*.conf.sample": "ini",
         "*.ofx": "xml",
+        "*.html": "jekyll",
     },
 
     // Explorer
@@ -36,5 +42,5 @@
 
     // Theme
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 1,
 }

@@ -17,7 +17,7 @@ ZSH_THEME="bullet-train"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -36,7 +36,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -144,3 +144,6 @@ eval "$(pyenv virtualenv-init -)"
 
 # comment this line before backup!
 pyenv virtualenvwrapper_lazy
+
+# added by travis gem
+[ -f /Users/moisesguimaraes/.travis/travis.sh ] && source /Users/moisesguimaraes/.travis/travis.sh
