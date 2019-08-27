@@ -56,4 +56,6 @@ which is completely different.
     "$\UF728"  = "cut:";                                         /*        Shift +       Del       */
     "^\UF727"  = "copy:";                                        /* Ctrl +               Insert    */
     "$\UF727"  = "paste:";                                       /*        Shift +       Insert    */
+    "^\UF746"  = "copy:";                                        /* Ctrl +               Help      */
+    "$\UF746"  = "paste:";                                       /*        Shift +       Help      */
 }
