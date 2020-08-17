@@ -5,7 +5,7 @@
     "workbench.startupEditor": "newUntitledFile",
 
     // Editor
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.renderWhitespace": "all",
     "files.associations": {
@@ -42,5 +42,8 @@
 
     // Theme
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": 1,
+
+    // Telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
 }

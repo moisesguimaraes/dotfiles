@@ -62,6 +62,9 @@ plugins=(
   git
 )
 
+# disable auto cd
+unsetopt AUTO_CD
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -130,6 +133,17 @@ alias ls='ls -GFh'
 alias gcb='git checkout -b'
 alias hsd='hack && ship && dwf'
 
+gitr() {
+    for repo in `find . -type d -iname ".git"`; do
+        pushd ${repo%/.git} > /dev/null
+
+        echo "$(tput setaf 5) \n# From git repo ${repo%/.git} \n $(tput sgr0)"
+        git $@ || return
+
+        popd > /dev/null
+    done
+}
+
 ###
 ### pyenv
 ###
@@ -145,5 +159,10 @@ eval "$(pyenv virtualenv-init -)"
 # comment this line before backup!
 pyenv virtualenvwrapper_lazy
 
+alias pup="pip install --upgrade pip"
+
 # added by travis gem
 [ -f /Users/moisesguimaraes/.travis/travis.sh ] && source /Users/moisesguimaraes/.travis/travis.sh
+
+# only show current folder name in tab/window title
+ZSH_THEME_TERM_TITLE_IDLE=%c
