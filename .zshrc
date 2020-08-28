@@ -132,16 +132,40 @@ alias ls='ls -GFh'
 # git shortcuts
 alias gcb='git checkout -b'
 alias hsd='hack && ship && dwf'
+alias gs='git status'
+alias gc='git commit'
+alias gp='git pull --rebase'
+alias gcam='git commit -am'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
-gitr() {
-    for repo in `find . -type d -iname ".git"`; do
-        pushd ${repo%/.git} > /dev/null
+function gitr() {
+  for repo in `find . -type d -iname ".git"`; do
+    pushd ${repo%/.git} > /dev/null
 
-        echo "$(tput setaf 5) \n# From git repo ${repo%/.git} \n $(tput sgr0)"
-        git $@ || return
+    echo "$(tput setaf 5) \n# From git repo ${repo%/.git} \n $(tput sgr0)"
+    git $@ || return
 
-        popd > /dev/null
-    done
+    popd > /dev/null
+  done
+}
+
+# Git upstream branch syncer.
+# Usage: gsync master (checks out master, pull upstream, push origin).
+function gsync() {
+  if [[ ! "$1" ]] ; then
+    echo "You must supply a branch."
+    return 0
+  fi
+
+  BRANCHES=$(git branch --list $1)
+  if [ ! "$BRANCHES" ] ; then
+    echo "Branch $1 does not exist."
+    return 0
+  fi
+
+  git checkout "$1" && \
+  git pull upstream "$1" && \
+  git push origin "$1"
 }
 
 ###
@@ -166,3 +190,40 @@ alias pup="pip install --upgrade pip"
 
 # only show current folder name in tab/window title
 ZSH_THEME_TERM_TITLE_IDLE=%c
+
+# Bash-style time output.
+export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
+
+# Completions.
+# autoload -Uz compinit && compinit
+# Case insensitive.
+# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# Tell homebrew to not autoupdate every single time I run it (just once a week).
+export HOMEBREW_AUTO_UPDATE_SECS=604800
+
+# Super useful Docker container oneshots.
+# Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
+function drun() {
+  docker run --rm -it "${1:-centos}" /bin/bash
+}
+
+# Enter a running Docker container.
+function denter() {
+  if [[ ! "$1" ]] ; then
+    echo "You must supply a container ID or name."
+    return 0
+  fi
+
+  docker exec -it $1 bash
+}
+
+# Delete a given line number in the known_hosts file.
+function knownrm() {
+  re='^[0-9]+$'
+  if ! [[ $1 =~ $re ]] ; then
+    echo "error: line number missing" >&2;
+  else
+    sed -i '' "$1d" ~/.ssh/known_hosts
+  fi
+}
