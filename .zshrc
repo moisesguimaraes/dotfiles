@@ -132,11 +132,6 @@ alias ls='ls -GFh'
 # git shortcuts
 alias gcb='git checkout -b'
 alias hsd='hack && ship && dwf'
-alias gs='git status'
-alias gc='git commit'
-alias gp='git pull --rebase'
-alias gcam='git commit -am'
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
 function gitr() {
   for repo in `find . -type d -iname ".git"`; do
@@ -227,3 +222,4 @@ function knownrm() {
     sed -i '' "$1d" ~/.ssh/known_hosts
   fi
 }
+export PATH="/usr/local/opt/ruby/bin:$PATH"

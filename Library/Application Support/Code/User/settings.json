@@ -46,4 +46,7 @@
     // Telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+
+    // Git
+    "git.suggestSmartCommit": false,
 }
