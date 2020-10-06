@@ -97,25 +97,17 @@ alias zshconfig="code $HOME/.zshrc"
 alias ohmyzsh="code $HOME/.oh-my-zsh"
 
 source $HOME/.zsh_theme_config
-
 source $HOME/.secrets/profilerc
 
-if [ "$(uname -s)" = "Darwin" ]; then
-  # clang static analyzer
-  export PATH=$PATH:$HOME/.checker/279/bin
-
-  # pokemon background alias
-  alias pokemon='/Applications/The\ Pokémon\ Online\ Trading\ Card\ Game/Pokemon\ Trading\ Card\ Game\ Online.app/Contents/MacOS/Pokemon\ Trading\ Card\ Game\ Online &>> /dev/null &'
-fi
-
+###
+### PATH
+###
 if [ "$(uname -s)" = "Linux" ]; then
   # pyenv path
   export PATH="$HOME/.pyenv/bin:$PATH"
 fi
 
-###
-### home path
-###
+export PATH="/usr/local/sbin:$PATH"
 export PATH="${HOME}/bin:${PATH}"
 
 ###
@@ -196,6 +188,10 @@ export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
 
 # Tell homebrew to not autoupdate every single time I run it (just once a week).
 export HOMEBREW_AUTO_UPDATE_SECS=604800
+
+#
+# docker
+#
 
 # Super useful Docker container oneshots.
 # Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
