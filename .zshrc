@@ -171,6 +171,7 @@ eval "$(pyenv virtualenv-init -)"
 pyenv virtualenvwrapper_lazy
 
 alias pup="pip install --upgrade pip"
+alias pil="pip list"
 
 # added by travis gem
 [ -f /Users/moisesguimaraes/.travis/travis.sh ] && source /Users/moisesguimaraes/.travis/travis.sh
