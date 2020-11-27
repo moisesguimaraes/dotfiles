@@ -38,7 +38,7 @@
 
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "~/.pyenv/shims/flake8",
+    "python.linting.flake8Path": "/usr/local/bin/flake8",
 
     // Theme
     "workbench.iconTheme": "material-icon-theme",
@@ -49,4 +49,11 @@
 
     // Git
     "git.suggestSmartCommit": false,
+    "python.showStartPage": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "hexEditor.hexedit",
+            "filenamePattern": "*.sav"
+        }
+    ],
 }
