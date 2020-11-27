@@ -1,8 +1,25 @@
-#!/bin/bash -x
-# hack: Rebase the latest changes from the master branch into your working branch
-ref=$(git symbolic-ref HEAD &2> /dev/null) || exit 0
-CURRENT="${ref#refs/heads/}"
-git checkout master
-git pull origin master
-git checkout ${CURRENT}
-git rebase master
+#!/bin/bash -e
+
+# hack: Rebase the latest changes from upstream into your feature branch
+
+CURRENT=$(git symbolic-ref --short HEAD) || exit 0
+if [[ $CURRENT == "main" ]] || [[ $CURRENT == "master" ]]; then
+    echo -e "can't hack on $CURRENT"
+    exit 0
+fi
+
+UPSTREAM=$(git remote | grep -w upstream || echo origin)
+MAIN=$(git branch | grep -w main || echo master)
+
+echo -e "Rebasing '$CURRENT' on top of '$UPSTREAM/$MAIN'"
+
+git checkout $MAIN
+git pull $UPSTREAM $MAIN
+
+if [[ $UPSTREAM == "upstream" ]]; then
+    echo -e "Updating 'origin/$MAIN'"
+    git push origin $MAIN
+fi
+
+git checkout $CURRENT
+git rebase $MAIN
