@@ -3,18 +3,7 @@ BULLETTRAIN_PROMPT_ORDER=(
   git
   status
   virtualenv
-  custom
-  context
   dir
-  screen
-  perl
-  ruby
-  nvm
-  aws
-  go
-  rust
-  elixir
-  # hg
   cmd_exec_time
 )
 
@@ -38,16 +27,10 @@ prompt_virtualenv() {
   local venv_prompt
   local virtualenv_path="$VIRTUAL_ENV"
 
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+  if [[ -n $virtualenv_path ]]; then
     venv_prompt="$(basename $virtualenv_path)"
-  elif which pyenv &> /dev/null; then
-    venv_prompt="$(pyenv version | sed -e 's/ (set.*$//' | tr '\n' ' ' | sed 's/.$//')"
-  fi
 
-  if [[ $venv_prompt = $(pyenv global | tr '\n' ' ' | sed 's/.$//') ]]; then
-    venv_prompt="global"
+    prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG \
+                  "$BULLETTRAIN_VIRTUALENV_PREFIX$venv_prompt"
   fi
-
-  prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG \
-                 "$BULLETTRAIN_VIRTUALENV_PREFIX  $venv_prompt"
 }

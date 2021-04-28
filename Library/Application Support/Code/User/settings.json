@@ -5,13 +5,13 @@
     "workbench.startupEditor": "newUntitledFile",
 
     // Editor
-    "editor.fontSize": 16,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 16,
     "editor.renderWhitespace": "all",
+    "editor.rulers": [80],
     "files.associations": {
         "*.conf.sample": "ini",
         "*.ofx": "xml",
-        "*.html": "jekyll",
     },
 
     // Explorer
@@ -54,6 +54,10 @@
         {
             "viewType": "hexEditor.hexedit",
             "filenamePattern": "*.sav"
+        },
+        {
+            "viewType": "jupyter-notebook",
+            "filenamePattern": "*.ipynb"
         }
     ],
 }
