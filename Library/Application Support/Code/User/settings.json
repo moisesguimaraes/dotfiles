@@ -1,63 +1,22 @@
 {
-    // General
-    "editor.minimap.enabled": false,
-    "extensions.ignoreRecommendations": true,
-    "workbench.startupEditor": "newUntitledFile",
-
     // Editor
-    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
+    "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
-    "editor.rulers": [80],
-    "files.associations": {
-        "*.conf.sample": "ini",
-        "*.ofx": "xml",
-    },
+    "editor.rulers": [120],
 
-    // Explorer
-    "explorer.confirmDelete": false,
-    "files.exclude": {
-        // default
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-
-        // python
-        "**/*.eggs" : true,
-        "**/*.egg-info" : true,
-        "**/*.pyc" : true,
-        "**/__pycache__" : true,
-        "**/.tox" : true,
-        "**/.stestr" : true,
-    },
-
-    // Python
-    "python.pythonPath": "~/.pyenv/shims/python",
-
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "/usr/local/bin/flake8",
-
-    // Theme
-    "workbench.iconTheme": "material-icon-theme",
-
-    // Telemetry
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    // Extensions
+    "extensions.ignoreRecommendations": true,
 
     // Git
-    "git.suggestSmartCommit": false,
-    "python.showStartPage": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "hexEditor.hexedit",
-            "filenamePattern": "*.sav"
-        },
-        {
-            "viewType": "jupyter-notebook",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-5-mini",
+
+    // Telemetry
+    "telemetry.telemetryLevel": "off",
+    
+    // Workbench
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Visual Studio Dark",
 }

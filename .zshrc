@@ -62,10 +62,10 @@ plugins=(
   git
 )
 
+source $ZSH/oh-my-zsh.sh
+
 # disable auto cd
 unsetopt AUTO_CD
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
