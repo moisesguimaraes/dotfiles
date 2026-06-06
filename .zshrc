@@ -16,6 +16,10 @@ ZSH_THEME="bullet-train"
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+# Nicer prompt.
+export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
+
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -81,8 +85,20 @@ else
   export EDITOR='code'
 fi
 
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
+# Set architecture-specific brew share path.
+arch_name="$(uname -m)"
+if [ "${arch_name}" = "x86_64" ]; then
+    share_path="/usr/local/share"
+elif [ "${arch_name}" = "arm64" ]; then
+    share_path="/opt/homebrew/share"
+else
+    echo "Unknown architecture: ${arch_name}"
+fi
+
+# Allow history search via up/down keys.
+source ${share_path}/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
 
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
@@ -196,8 +212,9 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 # Super useful Docker container oneshots.
 # Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
-function drun() {
-  docker run --rm -it "${1:-centos}" /bin/bash
+# Run on arm64 if getting errors: `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+dockrun() {
+ docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
 }
 
 # Enter a running Docker container.
