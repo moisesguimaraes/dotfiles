@@ -13,7 +13,7 @@
 [alias]
   c = commit
   ca = commit --amend
-  can = commit -amend --no-edit
+  can = commit --amend --no-edit
   cm = commit -m
   dc = diff --cached
   d = diff
@@ -26,3 +26,5 @@
   clean = git-lfs clean -- %f
 [gitreview]
   username = moguimar
+[pull]
+	rebase = false
